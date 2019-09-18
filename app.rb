@@ -20,31 +20,31 @@ DataMapper.finalize
 Joke.auto_upgrade!
 
 #READ ALL
-get "/joke" do
+get "/jokes" do
 	halt 200, {message: "Hello world"}.to_json
 end
 
 #READ ONE
-get "/joke/:id" do
+get "/jokes/:id" do
 
 end
 
 #READ ONE RANDOM JOKE
-get "/joke/random" do
+get "/jokes/random" do
 
 end
 
 #CREATE
-post "/joke" do
+post "/jokes" do
 
 end
 
 #UPDATE
-patch "/joke" do
+patch "/jokes" do
 
 end
 
 #DESTROY
-delete "/joke" do
+delete "/jokes" do
 
 end
