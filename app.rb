@@ -1,42 +1,41 @@
 require "sinatra"
-require_relative "api_authentication.rb"
-#the following urls are included in authentication.rb
-# GET /login
-# GET /logout
-# GET /sign_up
+require 'data_mapper' # metagem, requires common plugins too.
 
-# authenticate! will make sure that the user is signed in, if they are not they will be redirected to the login page
-# if the user is signed in, current_user will refer to the signed in user object.
-# if they are not signed in, current_user will be nil
-
-
-get "/" do
-	halt 200, {"message" => "Hello World"}.to_json
+# need install dm-sqlite-adapter
+# if on heroku, use Postgres database
+# if not use sqlite3 database I gave you
+if ENV['DATABASE_URL']
+  DataMapper::setup(:default, ENV['DATABASE_URL'] || 'postgres://localhost/mydb')
+else
+  DataMapper::setup(:default, "sqlite3://#{Dir.pwd}/app.db")
 end
 
-get "/logged_in_only" do
-	api_authenticate!
-	halt 200, {"message" => "Hello #{current_user.email}"}.to_json
-end
-
-get "/admin" do
-	api_authenticate!
-	admin_only!
-	halt 200, {"message" => "Super Secret Admin Stuff"}.to_json
-end
-
+#READ ALL
 get "/joke" do
 
 end
 
+#READ ONE
+get "/joke/:id" do
+
+end
+
+#READ RANDOM
+get "/joke/random" do
+
+end
+
+#CREATE
 post "/joke" do
 
 end
 
+#UPDATE
 patch "/joke" do
 
 end
 
+#DESTROY
 delete "/joke" do
 
 end
