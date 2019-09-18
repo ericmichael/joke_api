@@ -10,9 +10,18 @@ else
   DataMapper::setup(:default, "sqlite3://#{Dir.pwd}/app.db")
 end
 
+class Joke
+	include DataMapper::Resource
+	property :id, Serial
+	property :text, Text
+end
+
+DataMapper.finalize
+Joke.auto_upgrade!
+
 #READ ALL
 get "/joke" do
-
+	halt 200, {message: "Hello world"}.to_json
 end
 
 #READ ONE
@@ -20,7 +29,7 @@ get "/joke/:id" do
 
 end
 
-#READ RANDOM
+#READ ONE RANDOM JOKE
 get "/joke/random" do
 
 end
