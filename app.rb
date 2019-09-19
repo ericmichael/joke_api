@@ -40,11 +40,11 @@ post "/jokes" do
 end
 
 #UPDATE
-patch "/jokes" do
+patch "/jokes/:id" do
 
 end
 
 #DESTROY
-delete "/jokes" do
+delete "/jokes/:id" do
 
 end
